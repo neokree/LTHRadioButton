@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>LTHRadioButton by rolandleth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">LTHRadioButton</h1>
+      <h2 class="project-tagline">A radio button with a pretty animation</h2>
+      <a href="https://github.com/rolandleth/LTHRadioButton" class="btn">View on GitHub</a>
+      <a href="https://github.com/rolandleth/LTHRadioButton/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/rolandleth/LTHRadioButton/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="lthradiobutton" class="anchor" href="#lthradiobutton" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LTHRadioButton</h1>
+
+<p>Slightly inspired by Google's material radio button. </p>
+
+<p>The clip below has 3 sections: full speed, 25% and 10%, but after converting it to GIF, it actually made it longer, so the 10% part takes a really long time <g-emoji alias="smile" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f604.png" ios-version="6.0">😄</g-emoji>. <a href="https://rolandleth.com/assets/radio-button/video.mp4">Here's</a> an mp4 link; try with Chrome if Safari doesn't work - for me it doesn't.</p>
+
+<p><img src="https://rolandleth.com/assets/radio-button/gif.gif" alt=""></p>
+
+<h2>
+<a id="how-to-install" class="anchor" href="#how-to-install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to install</h2>
+
+<h4>
+<a id="cocoapods" class="anchor" href="#cocoapods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CocoaPods</h4>
+
+<p><a href="https://cocoapods.org">CocoaPods</a> is a dependency manager for Cocoa projects. You can install it with the following terminal command:</p>
+
+<pre><code>gem install cocoapods
+</code></pre>
+
+<p>To integrate <code>LTHRadioButton</code> into your Xcode project using CocoaPods, specify it in your Podfile:</p>
+
+<div class="highlight highlight-source-ruby"><pre>source <span class="pl-s"><span class="pl-pds">'</span>https://github.com/CocoaPods/Specs.git<span class="pl-pds">'</span></span>
+platform <span class="pl-c1">:ios</span>, <span class="pl-s"><span class="pl-pds">'</span>9.0<span class="pl-pds">'</span></span>
+use_frameworks!
+
+target <span class="pl-s"><span class="pl-pds">'</span>&lt;Your Target Name&gt;<span class="pl-pds">'</span></span> <span class="pl-k">do</span>
+  pod <span class="pl-s"><span class="pl-pds">'</span>LTHRadioButton<span class="pl-pds">'</span></span>
+<span class="pl-k">end</span></pre></div>
+
+<p>Then, run the following terminal command:</p>
+
+<pre><code>pod install
+</code></pre>
+
+<h4>
+<a id="manual" class="anchor" href="#manual" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Manual</h4>
+
+<p>Drag <code>LTHRadioButton.swift</code> from the <code>source</code> folder into your Xcode project.</p>
+
+<h2>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h2>
+
+<p>The initializer takes up to 3 params: a <code>radius</code>, a <code>selectedColor</code>, and a <code>deselectedColor</code>. All of them are optional:</p>
+
+<ul>
+<li>
+<code>radius</code> defaults to <code>18</code>
+</li>
+<li>
+<code>selectedColor</code> defaults to a light blue</li>
+<li>
+<code>deselectedColor</code> defaults to <code>UIColor.lightGray</code>
+</li>
+</ul>
+
+<p>It doesn't use Auto Layout internally, but after initialization it will have a proper size, so you can simply create constraints based on its <code>frame.width</code> and <code>frame.height</code>.</p>
+
+<h4>
+<a id="properties" class="anchor" href="#properties" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Properties</h4>
+
+<p><code>selectedColor</code> and <code>deselectedColor</code> have been made publicly customizable for cases like a <code>tableView</code> with alternating row and radio colors, where the <code>tableView</code> might dequeue a cell with one color for displaying a cell with a different color.</p>
+
+<p><code>isSelected</code> - Indicates whether the radio button is selected.</p>
+
+<h4>
+<a id="methods" class="anchor" href="#methods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Methods</h4>
+
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">init</span>(radius: CGFloat <span class="pl-k">=</span> <span class="pl-c1">18</span>, selectedColor: UIColor? <span class="pl-k">=</span> <span class="pl-c1">nil</span>, deselectedColor: UIColor? <span class="pl-k">=</span> <span class="pl-c1">nil</span>) <span class="pl-c">// Colors default internally if nil.</span>
+<span class="pl-k">func</span> <span class="pl-en">select</span>(animated: <span class="pl-c1">Bool</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>) // Selects the radio button.
+<span class="pl-k">func</span> <span class="pl-en">deselect</span>(animated: <span class="pl-c1">Bool</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>) // Deselects the radio button.</pre></div>
+
+<h3>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h3>
+
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">let</span> radioButton <span class="pl-k">=</span> LTHRadioButton(selectedColor: <span class="pl-k">.</span>red)
+container<span class="pl-k">.</span>addSubview(radioButton)
+
+radioButton<span class="pl-k">.</span>translatesAutoresizingMaskIntoConstraints <span class="pl-k">=</span> <span class="pl-c1">false</span>
+NSLayoutConstraint<span class="pl-k">.</span>activate([
+  radioButton<span class="pl-k">.</span>centerYAnchor<span class="pl-k">.</span>constraint(equalTo: container<span class="pl-k">.</span>centerYAnchor),
+  radioButton<span class="pl-k">.</span>leadingAnchor<span class="pl-k">.</span>constraint(equalTo: container<span class="pl-k">.</span>leadingAnchor, constant: <span class="pl-c1">16</span>),
+  radioButton<span class="pl-k">.</span>heightAnchor<span class="pl-k">.</span>constraint(equalToConstant: radioButton<span class="pl-k">.</span>frame<span class="pl-k">.</span>height),
+  radioButton<span class="pl-k">.</span>widthAnchor<span class="pl-k">.</span>constraint(equalToConstant: radioButton<span class="pl-k">.</span>frame<span class="pl-k">.</span>width)]
+)
+
+[<span class="pl-k">...</span>]
+
+radioButton<span class="pl-k">.</span>select()
+
+[<span class="pl-k">...</span>]
+
+radioButton<span class="pl-k">.</span>deselect(animated: <span class="pl-c1">false</span>)</pre></div>
+
+<h2>
+<a id="apps-using-this-control" class="anchor" href="#apps-using-this-control" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Apps using this control</h2>
+
+<p>If you're using this control, I'd love hearing from you!  </p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>Licensed under MIT. If you'd like (or need) a license without attribution, don't hesitate to <a href="mailto:roland@leth.ro">contact me</a>.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/rolandleth/LTHRadioButton">LTHRadioButton</a> is maintained by <a href="https://github.com/rolandleth">rolandleth</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
